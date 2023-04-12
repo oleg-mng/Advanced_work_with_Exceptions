@@ -10,8 +10,8 @@ public class Program {
             InnerApp.foo();
         } catch (ArithmeticException e) {
             System.out.println("Неверная работа с числом");
-        } catch (IOException e) {
-            System.out.println("Неверный ввод/вывод");
+//        } catch (IOException e) {
+//            System.out.println("Неверный ввод/вывод");
         } catch (Exception e) {
             System.out.println("Что то неверно");
 
@@ -24,7 +24,8 @@ class InnerApp {
         try {
             int num = bar();
         } catch (MyException e) {
-            if (e.a == 11){
+            if (e.a == 20123){
+                System.out.println("сработало myException");
 
             }
         }

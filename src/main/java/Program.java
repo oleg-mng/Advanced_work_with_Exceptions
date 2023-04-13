@@ -20,13 +20,12 @@ public class Program {
 }
 
 class InnerApp {
-    static void foo() throws MyException {
+    static void foo() {
         try {
             int num = bar();
         } catch (MyException e) {
             if (e.a == 20123){
                 System.out.println("сработало myException");
-
             }
         }
 
@@ -46,3 +45,5 @@ class MyException extends Exception {
         super(msg);
     }
 }
+
+

@@ -2,13 +2,13 @@ public class App2 {
     public static void main(String[] args) {
 
         String[][] ans = new String[][]{
-                {"1", "2", "3", "4"},
+                {"1", "2", "3", "a"},
                 {"1", "2", "3", "4"},
                 {"1", "2", "3", "4"},
                 {"1", "2", "3", "4"}
         };
         try {
-            ElementArraySum(ans, 4);
+            System.out.println(ElementArraySum(ans, 4));
         }catch (MyArrayDataException | MyArraySizeException e){
             System.out.println(e.getMessage());
         }
@@ -17,8 +17,12 @@ public class App2 {
 
     public static int ElementArraySum(String[][] inputArray, int n) throws MyArraySizeException, MyArrayDataException {
         int sum = 0;
-        if (inputArray.length != n || inputArray[0].length != n) {
-            throw new MyArraySizeException();
+        if (inputArray.length == n) {
+            for ( String[] el:inputArray) {
+                if (el.length != n){
+                    throw new MyArraySizeException();
+                }
+            }
 
         }
         int length = inputArray.length;
@@ -43,6 +47,6 @@ class MyArraySizeException extends Exception {
 
 class MyArrayDataException extends Exception {
     public MyArrayDataException(int row, int col) {
-        super("Невозможно преобразовать элемент массива в число" + row +", " + col);
+        super("Невозможно преобразовать элемент массива с координатами (" + row +", " + col +") в число");
     }
 }

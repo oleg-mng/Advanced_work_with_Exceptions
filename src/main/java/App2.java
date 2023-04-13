@@ -7,7 +7,12 @@ public class App2 {
                 {"1", "2", "3", "4"},
                 {"1", "2", "3", "4"}
         };
-        ElementArraySum(ans, 4);
+        try {
+            ElementArraySum(ans, 4);
+        }catch (MyArrayDataException | MyArraySizeException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public static int ElementArraySum(String[][] inputArray, int n) throws MyArraySizeException, MyArrayDataException {
@@ -22,7 +27,7 @@ public class App2 {
                 try {
                     sum += Integer.parseInt(inputArray[i][j]);
                 }catch (NumberFormatException e){
-                    throw new MyArrayDataException();
+                    throw new MyArrayDataException(i, j);
                 }
             }
         }
@@ -37,7 +42,7 @@ class MyArraySizeException extends Exception {
 }
 
 class MyArrayDataException extends Exception {
-    public MyArrayDataException() {
-        super("Невозможно преобразовать элемент массива в число");
+    public MyArrayDataException(int row, int col) {
+        super("Невозможно преобразовать элемент массива в число" + row +", " + col);
     }
 }
